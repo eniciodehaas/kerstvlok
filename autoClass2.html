@@ -46,15 +46,27 @@
          let bewegen = requestAnimationFrame( () => {
             this.verplaatsen();
             this.rijden();  // hierdoor wordt de functie continue herhaald
+            if (this._hori > 500) {
+               this._hori = 0;
+               this._vert = Math.random()*200;
+               this._snelh = Math.random()*6;
+               if (this._snelh < 2) {
+                  this._snelh = Math.random()*6;
+               }
+               // stijl veranderen naar de willekeurige vertical plaats
+               this._auto.style.top = this._vert + 'px'
+            }
          });
       }
+
+      
    }
 
    // twee instanties van de class Auto maken
-   let auto1 = new Auto(Math.random()*200, Math.random()*500, 4, 'red');
+   let auto1 = new Auto(Math.random()*200, Math.random()*500, Math.random()*6, 'red');
    auto1.maken();
 
-   let auto2 = new Auto(Math.random()*200, Math.random()*500, 2, 'green');
+   let auto2 = new Auto(Math.random()*200, Math.random()*500, Math.random()*6, 'green');
    auto2.maken();
 </script>
 </body>

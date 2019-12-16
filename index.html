@@ -18,21 +18,52 @@
                 this._hori = horizontal;
                 this._vert = vertical;
                 this._sp = speed;
+                this._snowflake;
             }
 
             maken() {
-                let snowflake = document.createElement('div');
-                snowflake.innerHTML = codeSVGvlok;
-                snowflake.className = 'vlok-svg';
-                snowflake.style.left = this._hori + '%';
-                snowflake.style.top = this._vert + '%';
-                document.body.appendChild(snowflake);
+                this._snowflake = document.createElement('div');
+                this._snowflake.innerHTML = codeSVGvlok;
+                this._snowflake.className = 'vlok-svg';
+                this._snowflake.style.left = this._hori + '%';
+                this._snowflake.style.top = this._vert + '%';
+                document.body.appendChild(this._snowflake);
+                this.vallen();
             }
+
+            verplaatsen() {
+         this._vert += this._sp;
+         // bijwerken in de DOM
+         this._snowflake.style.top = this._vert + 'px';
+      }
+      // rijden is een method om continue te verplaatsen
+      vallen() {
+         let bewegen = requestAnimationFrame( () => {
+            this.verplaatsen();
+            this.vallen();  // hierdoor wordt de functie continue herhaald
+         });
+         if (this._vert > 900) {
+               this._vert = 0;
+               this._hori = Math.random()*90;
+               this.randomSpeed();
+               // stijl veranderen naar de willekeurige vertical plaats
+               this._snowflake.style.left = this._hori + 'vw'
+            }
+
         }
 
-        let snowflake1 = new Snowflake(Math.random()*90, Math.random()*90, 5);
+        randomSpeed() {
+            this._sp = Math.random()*6;
+               if (this._sp < 2) {
+                  this._sp = Math.random()*6;
+               }
+               return this._sp;
+
+        }
+    }
+        let snowflake1 = new Snowflake(Math.random()*90, 0, 5);
             snowflake1.maken();
-        let snowflake2 = new Snowflake(Math.random()*90, Math.random()*90, 5);
+        let snowflake2 = new Snowflake(Math.random()*90, 0, 5);
             snowflake2.maken();
 
 
