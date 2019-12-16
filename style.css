@@ -1,0 +1,17 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Mountains of Christmas', cursive;
+    height: 100vh;
+    background-color: red;
+}
+
+.vlok-svg {
+    width: 30em;
+    stroke: white;
+    stroke-width: 3;
+    fill: none;
+}
