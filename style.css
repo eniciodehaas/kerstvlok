@@ -10,7 +10,8 @@ body {
 }
 
 .vlok-svg {
-    width: 30em;
+    width: 10em;
+    position: absolute;
     stroke: white;
     stroke-width: 3;
     fill: none;

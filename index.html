@@ -13,10 +13,31 @@
     <h1>Zalig kerstvlokje</h1>
     <script src="sneeuw.js"></script>
     <script>
-        let div = document.createElement('div');
-        div.innerHTML = codeSVGvlok;
-        div.className = 'vlok-svg';
-        document.body.appendChild(div);
+        class Snowflake {
+            constructor( horizontal, vertical, speed) {
+                this._hori = horizontal;
+                this._vert = vertical;
+                this._sp = speed;
+            }
+
+            maken() {
+                let snowflake = document.createElement('div');
+                snowflake.innerHTML = codeSVGvlok;
+                snowflake.className = 'vlok-svg';
+                snowflake.style.left = this._hori + '%';
+                snowflake.style.top = this._vert + '%';
+                document.body.appendChild(snowflake);
+            }
+        }
+
+        let snowflake1 = new Snowflake(Math.random()*90, Math.random()*90, 5);
+            snowflake1.maken();
+        let snowflake2 = new Snowflake(Math.random()*90, Math.random()*90, 5);
+            snowflake2.maken();
+
+
+
+        
     </script>
 </body>
 </html>
